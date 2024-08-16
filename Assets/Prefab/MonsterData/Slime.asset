@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterID: 1
   monsterName: Slime
-  monsterElement: 1
+  monsterElement: 3
   monsterHealthPoint: 300
   monsterAttack: 10
   monsterDefense: 20

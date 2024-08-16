@@ -37,18 +37,45 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""abcc56b5-b03b-4438-a61a-98ba4a99bdcd"",
+                    ""id"": ""7a3467ac-474f-43f5-82f6-f2c14b61ee34"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sprint"",
+                    ""name"": ""OpenEquipemntMenu"",
                     ""type"": ""Button"",
-                    ""id"": ""7fce2f4a-95e1-404a-a74f-a40f7c75bfb5"",
+                    ""id"": ""1ca5057e-382f-4e26-9edc-cc29869cdbca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenWeirdMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e170d64-29f6-4605-a7b6-b633e118942f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventoryMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8f13c5b-326f-428b-b114-96d9654f7a9c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenOptionMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a3962f6-a86a-4fe5-af19-1b791a416e5c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -113,23 +140,56 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4a4a5cd7-f10d-4dc9-8871-75a7f152ca30"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""a7c0db03-22de-4088-8b05-d1b59dee2651"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3a1fae12-9717-4202-b1f7-f7f910d41ccf"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""id"": ""0a8eb53c-d4e7-459a-90f0-54e360b3a5e0"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Sprint"",
+                    ""action"": ""OpenEquipemntMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba284e81-8032-46dd-adf9-0c765bb2d66a"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenWeirdMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ae0bc01-d6a1-45e5-b437-ff24b1660b75"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventoryMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""852280bf-01b1-4ece-906c-3f67936f09f8"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenOptionMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -206,6 +266,54 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerMonster"",
+            ""id"": ""99425f57-c368-45df-bda5-2775820790a4"",
+            ""actions"": [
+                {
+                    ""name"": ""Transform"",
+                    ""type"": ""Button"",
+                    ""id"": ""93a41c40-d7d6-46db-a8d5-e196ca597f32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DeTrasnform"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4786340-4818-4ef5-a8bd-36f23e690d09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6572bbfd-c191-4907-aca6-db143fb2b0eb"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Transform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1184ff52-1c19-4ad8-a8ac-e404f55aed78"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DeTrasnform"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -213,11 +321,18 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerMovement_Sprint = m_PlayerMovement.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerMovement_OpenEquipemntMenu = m_PlayerMovement.FindAction("OpenEquipemntMenu", throwIfNotFound: true);
+        m_PlayerMovement_OpenWeirdMenu = m_PlayerMovement.FindAction("OpenWeirdMenu", throwIfNotFound: true);
+        m_PlayerMovement_OpenInventoryMenu = m_PlayerMovement.FindAction("OpenInventoryMenu", throwIfNotFound: true);
+        m_PlayerMovement_OpenOptionMenu = m_PlayerMovement.FindAction("OpenOptionMenu", throwIfNotFound: true);
         // PlayerCamera
         m_PlayerCamera = asset.FindActionMap("PlayerCamera", throwIfNotFound: true);
         m_PlayerCamera_Movement = m_PlayerCamera.FindAction("Movement", throwIfNotFound: true);
+        // PlayerMonster
+        m_PlayerMonster = asset.FindActionMap("PlayerMonster", throwIfNotFound: true);
+        m_PlayerMonster_Transform = m_PlayerMonster.FindAction("Transform", throwIfNotFound: true);
+        m_PlayerMonster_DeTrasnform = m_PlayerMonster.FindAction("DeTrasnform", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -280,15 +395,21 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Movement;
-    private readonly InputAction m_PlayerMovement_Jump;
-    private readonly InputAction m_PlayerMovement_Sprint;
+    private readonly InputAction m_PlayerMovement_Attack;
+    private readonly InputAction m_PlayerMovement_OpenEquipemntMenu;
+    private readonly InputAction m_PlayerMovement_OpenWeirdMenu;
+    private readonly InputAction m_PlayerMovement_OpenInventoryMenu;
+    private readonly InputAction m_PlayerMovement_OpenOptionMenu;
     public struct PlayerMovementActions
     {
         private @CharacterControls m_Wrapper;
         public PlayerMovementActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
-        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
-        public InputAction @Sprint => m_Wrapper.m_PlayerMovement_Sprint;
+        public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
+        public InputAction @OpenEquipemntMenu => m_Wrapper.m_PlayerMovement_OpenEquipemntMenu;
+        public InputAction @OpenWeirdMenu => m_Wrapper.m_PlayerMovement_OpenWeirdMenu;
+        public InputAction @OpenInventoryMenu => m_Wrapper.m_PlayerMovement_OpenInventoryMenu;
+        public InputAction @OpenOptionMenu => m_Wrapper.m_PlayerMovement_OpenOptionMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,12 +422,21 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Sprint.started += instance.OnSprint;
-            @Sprint.performed += instance.OnSprint;
-            @Sprint.canceled += instance.OnSprint;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @OpenEquipemntMenu.started += instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.performed += instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.canceled += instance.OnOpenEquipemntMenu;
+            @OpenWeirdMenu.started += instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.performed += instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.canceled += instance.OnOpenWeirdMenu;
+            @OpenInventoryMenu.started += instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.performed += instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.canceled += instance.OnOpenInventoryMenu;
+            @OpenOptionMenu.started += instance.OnOpenOptionMenu;
+            @OpenOptionMenu.performed += instance.OnOpenOptionMenu;
+            @OpenOptionMenu.canceled += instance.OnOpenOptionMenu;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -314,12 +444,21 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Sprint.started -= instance.OnSprint;
-            @Sprint.performed -= instance.OnSprint;
-            @Sprint.canceled -= instance.OnSprint;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @OpenEquipemntMenu.started -= instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.performed -= instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.canceled -= instance.OnOpenEquipemntMenu;
+            @OpenWeirdMenu.started -= instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.performed -= instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.canceled -= instance.OnOpenWeirdMenu;
+            @OpenInventoryMenu.started -= instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.performed -= instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.canceled -= instance.OnOpenInventoryMenu;
+            @OpenOptionMenu.started -= instance.OnOpenOptionMenu;
+            @OpenOptionMenu.performed -= instance.OnOpenOptionMenu;
+            @OpenOptionMenu.canceled -= instance.OnOpenOptionMenu;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -383,14 +522,76 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerCameraActions @PlayerCamera => new PlayerCameraActions(this);
+
+    // PlayerMonster
+    private readonly InputActionMap m_PlayerMonster;
+    private List<IPlayerMonsterActions> m_PlayerMonsterActionsCallbackInterfaces = new List<IPlayerMonsterActions>();
+    private readonly InputAction m_PlayerMonster_Transform;
+    private readonly InputAction m_PlayerMonster_DeTrasnform;
+    public struct PlayerMonsterActions
+    {
+        private @CharacterControls m_Wrapper;
+        public PlayerMonsterActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Transform => m_Wrapper.m_PlayerMonster_Transform;
+        public InputAction @DeTrasnform => m_Wrapper.m_PlayerMonster_DeTrasnform;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMonster; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerMonsterActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerMonsterActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerMonsterActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerMonsterActionsCallbackInterfaces.Add(instance);
+            @Transform.started += instance.OnTransform;
+            @Transform.performed += instance.OnTransform;
+            @Transform.canceled += instance.OnTransform;
+            @DeTrasnform.started += instance.OnDeTrasnform;
+            @DeTrasnform.performed += instance.OnDeTrasnform;
+            @DeTrasnform.canceled += instance.OnDeTrasnform;
+        }
+
+        private void UnregisterCallbacks(IPlayerMonsterActions instance)
+        {
+            @Transform.started -= instance.OnTransform;
+            @Transform.performed -= instance.OnTransform;
+            @Transform.canceled -= instance.OnTransform;
+            @DeTrasnform.started -= instance.OnDeTrasnform;
+            @DeTrasnform.performed -= instance.OnDeTrasnform;
+            @DeTrasnform.canceled -= instance.OnDeTrasnform;
+        }
+
+        public void RemoveCallbacks(IPlayerMonsterActions instance)
+        {
+            if (m_Wrapper.m_PlayerMonsterActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerMonsterActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerMonsterActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerMonsterActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerMonsterActions @PlayerMonster => new PlayerMonsterActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnOpenEquipemntMenu(InputAction.CallbackContext context);
+        void OnOpenWeirdMenu(InputAction.CallbackContext context);
+        void OnOpenInventoryMenu(InputAction.CallbackContext context);
+        void OnOpenOptionMenu(InputAction.CallbackContext context);
     }
     public interface IPlayerCameraActions
     {
         void OnMovement(InputAction.CallbackContext context);
+    }
+    public interface IPlayerMonsterActions
+    {
+        void OnTransform(InputAction.CallbackContext context);
+        void OnDeTrasnform(InputAction.CallbackContext context);
     }
 }
