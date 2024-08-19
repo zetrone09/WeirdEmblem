@@ -46,36 +46,18 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenEquipemntMenu"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""1ca5057e-382f-4e26-9edc-cc29869cdbca"",
+                    ""id"": ""92e442ee-b19d-4cb6-bfd7-cda2d50b6953"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenWeirdMenu"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
-                    ""id"": ""1e170d64-29f6-4605-a7b6-b633e118942f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""OpenInventoryMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""d8f13c5b-326f-428b-b114-96d9654f7a9c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""OpenOptionMenu"",
-                    ""type"": ""Button"",
-                    ""id"": ""7a3962f6-a86a-4fe5-af19-1b791a416e5c"",
+                    ""id"": ""cdae5f9c-b6e3-4cec-94fe-c8a289cb147d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -151,45 +133,23 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0a8eb53c-d4e7-459a-90f0-54e360b3a5e0"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""id"": ""0c493621-c343-4382-a5d4-34072197e11e"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""OpenEquipemntMenu"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ba284e81-8032-46dd-adf9-0c765bb2d66a"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""id"": ""fc5baa43-450a-4b48-a917-c4b5aabfb6b4"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""OpenWeirdMenu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9ae0bc01-d6a1-45e5-b437-ff24b1660b75"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenInventoryMenu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""852280bf-01b1-4ece-906c-3f67936f09f8"",
-                    ""path"": ""<Keyboard>/o"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""OpenOptionMenu"",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -314,6 +274,94 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerMenu"",
+            ""id"": ""c09151a2-a6fa-44d5-a452-c631ceb66584"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenEquipemntMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d963b66-c1a7-497d-8691-77dc027ac8c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenWeirdMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""02d5b115-e49f-4411-b474-bd39f5417514"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenInventoryMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""770922d3-c6ae-4d53-ad3d-3ce9a298ef41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenOptionMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""5425e08b-b373-4b77-93f0-cc6c9a5405f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""309cc8ef-af07-4aa4-8fc1-3993d6b3d26b"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenEquipemntMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a86a2ad6-43cd-4920-8d4b-a32fc1ef327f"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenWeirdMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2aa69cb8-1788-41e7-af2e-e8466cf9fdbe"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInventoryMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7481362-5708-44fd-b375-04ab456dd0fc"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenOptionMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -322,10 +370,8 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
         m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
-        m_PlayerMovement_OpenEquipemntMenu = m_PlayerMovement.FindAction("OpenEquipemntMenu", throwIfNotFound: true);
-        m_PlayerMovement_OpenWeirdMenu = m_PlayerMovement.FindAction("OpenWeirdMenu", throwIfNotFound: true);
-        m_PlayerMovement_OpenInventoryMenu = m_PlayerMovement.FindAction("OpenInventoryMenu", throwIfNotFound: true);
-        m_PlayerMovement_OpenOptionMenu = m_PlayerMovement.FindAction("OpenOptionMenu", throwIfNotFound: true);
+        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_Sprint = m_PlayerMovement.FindAction("Sprint", throwIfNotFound: true);
         // PlayerCamera
         m_PlayerCamera = asset.FindActionMap("PlayerCamera", throwIfNotFound: true);
         m_PlayerCamera_Movement = m_PlayerCamera.FindAction("Movement", throwIfNotFound: true);
@@ -333,6 +379,12 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         m_PlayerMonster = asset.FindActionMap("PlayerMonster", throwIfNotFound: true);
         m_PlayerMonster_Transform = m_PlayerMonster.FindAction("Transform", throwIfNotFound: true);
         m_PlayerMonster_DeTrasnform = m_PlayerMonster.FindAction("DeTrasnform", throwIfNotFound: true);
+        // PlayerMenu
+        m_PlayerMenu = asset.FindActionMap("PlayerMenu", throwIfNotFound: true);
+        m_PlayerMenu_OpenEquipemntMenu = m_PlayerMenu.FindAction("OpenEquipemntMenu", throwIfNotFound: true);
+        m_PlayerMenu_OpenWeirdMenu = m_PlayerMenu.FindAction("OpenWeirdMenu", throwIfNotFound: true);
+        m_PlayerMenu_OpenInventoryMenu = m_PlayerMenu.FindAction("OpenInventoryMenu", throwIfNotFound: true);
+        m_PlayerMenu_OpenOptionMenu = m_PlayerMenu.FindAction("OpenOptionMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -396,20 +448,16 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
     private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
     private readonly InputAction m_PlayerMovement_Movement;
     private readonly InputAction m_PlayerMovement_Attack;
-    private readonly InputAction m_PlayerMovement_OpenEquipemntMenu;
-    private readonly InputAction m_PlayerMovement_OpenWeirdMenu;
-    private readonly InputAction m_PlayerMovement_OpenInventoryMenu;
-    private readonly InputAction m_PlayerMovement_OpenOptionMenu;
+    private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_Sprint;
     public struct PlayerMovementActions
     {
         private @CharacterControls m_Wrapper;
         public PlayerMovementActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
         public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
-        public InputAction @OpenEquipemntMenu => m_Wrapper.m_PlayerMovement_OpenEquipemntMenu;
-        public InputAction @OpenWeirdMenu => m_Wrapper.m_PlayerMovement_OpenWeirdMenu;
-        public InputAction @OpenInventoryMenu => m_Wrapper.m_PlayerMovement_OpenInventoryMenu;
-        public InputAction @OpenOptionMenu => m_Wrapper.m_PlayerMovement_OpenOptionMenu;
+        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @Sprint => m_Wrapper.m_PlayerMovement_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -425,18 +473,12 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @OpenEquipemntMenu.started += instance.OnOpenEquipemntMenu;
-            @OpenEquipemntMenu.performed += instance.OnOpenEquipemntMenu;
-            @OpenEquipemntMenu.canceled += instance.OnOpenEquipemntMenu;
-            @OpenWeirdMenu.started += instance.OnOpenWeirdMenu;
-            @OpenWeirdMenu.performed += instance.OnOpenWeirdMenu;
-            @OpenWeirdMenu.canceled += instance.OnOpenWeirdMenu;
-            @OpenInventoryMenu.started += instance.OnOpenInventoryMenu;
-            @OpenInventoryMenu.performed += instance.OnOpenInventoryMenu;
-            @OpenInventoryMenu.canceled += instance.OnOpenInventoryMenu;
-            @OpenOptionMenu.started += instance.OnOpenOptionMenu;
-            @OpenOptionMenu.performed += instance.OnOpenOptionMenu;
-            @OpenOptionMenu.canceled += instance.OnOpenOptionMenu;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Sprint.started += instance.OnSprint;
+            @Sprint.performed += instance.OnSprint;
+            @Sprint.canceled += instance.OnSprint;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -447,18 +489,12 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @OpenEquipemntMenu.started -= instance.OnOpenEquipemntMenu;
-            @OpenEquipemntMenu.performed -= instance.OnOpenEquipemntMenu;
-            @OpenEquipemntMenu.canceled -= instance.OnOpenEquipemntMenu;
-            @OpenWeirdMenu.started -= instance.OnOpenWeirdMenu;
-            @OpenWeirdMenu.performed -= instance.OnOpenWeirdMenu;
-            @OpenWeirdMenu.canceled -= instance.OnOpenWeirdMenu;
-            @OpenInventoryMenu.started -= instance.OnOpenInventoryMenu;
-            @OpenInventoryMenu.performed -= instance.OnOpenInventoryMenu;
-            @OpenInventoryMenu.canceled -= instance.OnOpenInventoryMenu;
-            @OpenOptionMenu.started -= instance.OnOpenOptionMenu;
-            @OpenOptionMenu.performed -= instance.OnOpenOptionMenu;
-            @OpenOptionMenu.canceled -= instance.OnOpenOptionMenu;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Sprint.started -= instance.OnSprint;
+            @Sprint.performed -= instance.OnSprint;
+            @Sprint.canceled -= instance.OnSprint;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -576,14 +612,82 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerMonsterActions @PlayerMonster => new PlayerMonsterActions(this);
+
+    // PlayerMenu
+    private readonly InputActionMap m_PlayerMenu;
+    private List<IPlayerMenuActions> m_PlayerMenuActionsCallbackInterfaces = new List<IPlayerMenuActions>();
+    private readonly InputAction m_PlayerMenu_OpenEquipemntMenu;
+    private readonly InputAction m_PlayerMenu_OpenWeirdMenu;
+    private readonly InputAction m_PlayerMenu_OpenInventoryMenu;
+    private readonly InputAction m_PlayerMenu_OpenOptionMenu;
+    public struct PlayerMenuActions
+    {
+        private @CharacterControls m_Wrapper;
+        public PlayerMenuActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenEquipemntMenu => m_Wrapper.m_PlayerMenu_OpenEquipemntMenu;
+        public InputAction @OpenWeirdMenu => m_Wrapper.m_PlayerMenu_OpenWeirdMenu;
+        public InputAction @OpenInventoryMenu => m_Wrapper.m_PlayerMenu_OpenInventoryMenu;
+        public InputAction @OpenOptionMenu => m_Wrapper.m_PlayerMenu_OpenOptionMenu;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerMenuActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerMenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerMenuActionsCallbackInterfaces.Add(instance);
+            @OpenEquipemntMenu.started += instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.performed += instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.canceled += instance.OnOpenEquipemntMenu;
+            @OpenWeirdMenu.started += instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.performed += instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.canceled += instance.OnOpenWeirdMenu;
+            @OpenInventoryMenu.started += instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.performed += instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.canceled += instance.OnOpenInventoryMenu;
+            @OpenOptionMenu.started += instance.OnOpenOptionMenu;
+            @OpenOptionMenu.performed += instance.OnOpenOptionMenu;
+            @OpenOptionMenu.canceled += instance.OnOpenOptionMenu;
+        }
+
+        private void UnregisterCallbacks(IPlayerMenuActions instance)
+        {
+            @OpenEquipemntMenu.started -= instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.performed -= instance.OnOpenEquipemntMenu;
+            @OpenEquipemntMenu.canceled -= instance.OnOpenEquipemntMenu;
+            @OpenWeirdMenu.started -= instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.performed -= instance.OnOpenWeirdMenu;
+            @OpenWeirdMenu.canceled -= instance.OnOpenWeirdMenu;
+            @OpenInventoryMenu.started -= instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.performed -= instance.OnOpenInventoryMenu;
+            @OpenInventoryMenu.canceled -= instance.OnOpenInventoryMenu;
+            @OpenOptionMenu.started -= instance.OnOpenOptionMenu;
+            @OpenOptionMenu.performed -= instance.OnOpenOptionMenu;
+            @OpenOptionMenu.canceled -= instance.OnOpenOptionMenu;
+        }
+
+        public void RemoveCallbacks(IPlayerMenuActions instance)
+        {
+            if (m_Wrapper.m_PlayerMenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerMenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerMenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerMenuActions @PlayerMenu => new PlayerMenuActions(this);
     public interface IPlayerMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnOpenEquipemntMenu(InputAction.CallbackContext context);
-        void OnOpenWeirdMenu(InputAction.CallbackContext context);
-        void OnOpenInventoryMenu(InputAction.CallbackContext context);
-        void OnOpenOptionMenu(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
     }
     public interface IPlayerCameraActions
     {
@@ -593,5 +697,12 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
     {
         void OnTransform(InputAction.CallbackContext context);
         void OnDeTrasnform(InputAction.CallbackContext context);
+    }
+    public interface IPlayerMenuActions
+    {
+        void OnOpenEquipemntMenu(InputAction.CallbackContext context);
+        void OnOpenWeirdMenu(InputAction.CallbackContext context);
+        void OnOpenInventoryMenu(InputAction.CallbackContext context);
+        void OnOpenOptionMenu(InputAction.CallbackContext context);
     }
 }

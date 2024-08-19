@@ -24,36 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenEquipemntMenu",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "1ca5057e-382f-4e26-9edc-cc29869cdbca",
+                    "id": "92e442ee-b19d-4cb6-bfd7-cda2d50b6953",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenWeirdMenu",
+                    "name": "Sprint",
                     "type": "Button",
-                    "id": "1e170d64-29f6-4605-a7b6-b633e118942f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenInventoryMenu",
-                    "type": "Button",
-                    "id": "d8f13c5b-326f-428b-b114-96d9654f7a9c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OpenOptionMenu",
-                    "type": "Button",
-                    "id": "7a3962f6-a86a-4fe5-af19-1b791a416e5c",
+                    "id": "cdae5f9c-b6e3-4cec-94fe-c8a289cb147d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -129,45 +111,23 @@
                 },
                 {
                     "name": "",
-                    "id": "0a8eb53c-d4e7-459a-90f0-54e360b3a5e0",
-                    "path": "<Keyboard>/c",
+                    "id": "0c493621-c343-4382-a5d4-34072197e11e",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OpenEquipemntMenu",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ba284e81-8032-46dd-adf9-0c765bb2d66a",
-                    "path": "<Keyboard>/g",
+                    "id": "fc5baa43-450a-4b48-a917-c4b5aabfb6b4",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OpenWeirdMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9ae0bc01-d6a1-45e5-b437-ff24b1660b75",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenInventoryMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "852280bf-01b1-4ece-906c-3f67936f09f8",
-                    "path": "<Keyboard>/o",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OpenOptionMenu",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -288,6 +248,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "DeTrasnform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerMenu",
+            "id": "c09151a2-a6fa-44d5-a452-c631ceb66584",
+            "actions": [
+                {
+                    "name": "OpenEquipemntMenu",
+                    "type": "Button",
+                    "id": "1d963b66-c1a7-497d-8691-77dc027ac8c5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenWeirdMenu",
+                    "type": "Button",
+                    "id": "02d5b115-e49f-4411-b474-bd39f5417514",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenInventoryMenu",
+                    "type": "Button",
+                    "id": "770922d3-c6ae-4d53-ad3d-3ce9a298ef41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenOptionMenu",
+                    "type": "Button",
+                    "id": "5425e08b-b373-4b77-93f0-cc6c9a5405f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "309cc8ef-af07-4aa4-8fc1-3993d6b3d26b",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenEquipemntMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a86a2ad6-43cd-4920-8d4b-a32fc1ef327f",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenWeirdMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2aa69cb8-1788-41e7-af2e-e8466cf9fdbe",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventoryMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a7481362-5708-44fd-b375-04ab456dd0fc",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenOptionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

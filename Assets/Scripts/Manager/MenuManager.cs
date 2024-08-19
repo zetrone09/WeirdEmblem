@@ -17,10 +17,10 @@ public class MenuManager : MonoBehaviour
         if (characterControls == null)
         {
             characterControls = new CharacterControls();
-            characterControls.PlayerMovement.OpenEquipemntMenu.performed += ctx => OpenEquipemntMenu();
-            characterControls.PlayerMovement.OpenWeirdMenu.performed += ctx => OpenWeirdMenu();
-            characterControls.PlayerMovement.OpenInventoryMenu.performed += ctx => OpenInventoryMenu();
-            characterControls.PlayerMovement.OpenOptionMenu.performed += ctx => OpenOptionMenu();     
+            characterControls.PlayerMenu.OpenEquipemntMenu.performed += ctx => OpenEquipemntMenu();
+            characterControls.PlayerMenu.OpenWeirdMenu.performed += ctx => OpenWeirdMenu();
+            characterControls.PlayerMenu.OpenInventoryMenu.performed += ctx => OpenInventoryMenu();
+            characterControls.PlayerMenu.OpenOptionMenu.performed += ctx => OpenOptionMenu();     
         }
         characterControls.Enable();
     }
