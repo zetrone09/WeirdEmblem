@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6333577061235659211}
+  - component: {fileID: 7114927535969078538}
   m_Layer: 0
   m_Name: Player Camera (Horizontal)
   m_TagString: Untagged
@@ -32,6 +33,29 @@ Transform:
   - {fileID: 5625404294990128526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7114927535969078538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526347099717289459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91238fcc978f244a9b38a02bbeee2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  PlayerManager: {fileID: 0}
+  cameraObject: {fileID: 945782499999652389}
+  cameraPivotTransform: {fileID: 5625404294990128526}
+  CollisionlayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  currentTarget: {fileID: 0}
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5751326689291081706
 GameObject:
   m_ObjectHideFlags: 0

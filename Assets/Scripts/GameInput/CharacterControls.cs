@@ -167,6 +167,15 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""82298e03-6dad-403e-84bc-50c5607bf78a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -224,6 +233,17 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f664934c-465d-4bfe-a034-7e3da5c54385"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -375,6 +395,7 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
         // PlayerCamera
         m_PlayerCamera = asset.FindActionMap("PlayerCamera", throwIfNotFound: true);
         m_PlayerCamera_Movement = m_PlayerCamera.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerCamera_LockTarget = m_PlayerCamera.FindAction("LockTarget", throwIfNotFound: true);
         // PlayerMonster
         m_PlayerMonster = asset.FindActionMap("PlayerMonster", throwIfNotFound: true);
         m_PlayerMonster_Transform = m_PlayerMonster.FindAction("Transform", throwIfNotFound: true);
@@ -517,11 +538,13 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerCamera;
     private List<IPlayerCameraActions> m_PlayerCameraActionsCallbackInterfaces = new List<IPlayerCameraActions>();
     private readonly InputAction m_PlayerCamera_Movement;
+    private readonly InputAction m_PlayerCamera_LockTarget;
     public struct PlayerCameraActions
     {
         private @CharacterControls m_Wrapper;
         public PlayerCameraActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerCamera_Movement;
+        public InputAction @LockTarget => m_Wrapper.m_PlayerCamera_LockTarget;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCamera; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -534,6 +557,9 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @LockTarget.started += instance.OnLockTarget;
+            @LockTarget.performed += instance.OnLockTarget;
+            @LockTarget.canceled += instance.OnLockTarget;
         }
 
         private void UnregisterCallbacks(IPlayerCameraActions instance)
@@ -541,6 +567,9 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @LockTarget.started -= instance.OnLockTarget;
+            @LockTarget.performed -= instance.OnLockTarget;
+            @LockTarget.canceled -= instance.OnLockTarget;
         }
 
         public void RemoveCallbacks(IPlayerCameraActions instance)
@@ -692,6 +721,7 @@ public partial class @CharacterControls: IInputActionCollection2, IDisposable
     public interface IPlayerCameraActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnLockTarget(InputAction.CallbackContext context);
     }
     public interface IPlayerMonsterActions
     {
