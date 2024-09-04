@@ -1,89 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.XR;
+
 
 public class PlayerCombatManager : MonoBehaviour
 {
     PlayerManager playerManager;
-    PlayerInput playerInput;
-    CameraManager cameraManager;
+    PlayerInput PlayerInput;
+    public Collider attackCollider;
 
-    [Header("Target Lock")]
-    private bool isLock = false;
-    public Transform currentTarget;
-    private float lockOnRadius = 10f;
-    public LayerMask TargetLayerMask;
+    private float findTargetRadius = 8f;
+    public LayerMask targetLayer;
+
+    [Header("Combo Setting")]
+    private float attackComboStep = 0;
+    private float comboDelay = 1f;
+    private float lastAttackTime;
+    private bool attackCombatNext = false;
 
     [Header("Dash Setting")]
-    public float dashSpeed = 5f;
-    public float dashDistance = 5f;
-    public float dashCooldown = 1f;
-    public float dashStopDistance = 1f;
-    public bool isDashing = false;
-    public bool canDash = true;
+    private bool isDashing;
+    private float dashStopDistance = 1.5f;
+    private float enemyDistance;
+    private float dashSpeed = 10f;
+
 
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager>();
-        playerInput = GetComponent<PlayerInput>();
-        cameraManager = FindAnyObjectByType<CameraManager>();
+        PlayerInput = GetComponent<PlayerInput>();
+        attackCollider.enabled = false;
     }
-    private void Update()
+    public void HandleCombatAction()
     {
-        if (playerInput != null)
-        {
-            TargetLock();
-            if (currentTarget != null)
+        if (playerManager != null)
+        {            
+            FindTargetEnemy();        
+            if (playerManager.currentTarget != null && IsEnemyInRanger() )
             {
-                if (playerInput.CombatInput && !isDashing)
+                if (PlayerInput.SprintInput)
                 {
                     StartCoroutine(DashTowardsTarget());
-
                 }
-                else if (Vector3.Distance(transform.position, currentTarget.position) <= dashStopDistance)
-                {
-                    playerManager.playerAnimatorManager.UpdateAnimatorCombatParameter(playerInput.CombatInput);
-                }
-            }          
-            if (playerInput.SprintInput && canDash && !playerInput.CombatInput)
-            {
-                Dash();
+                HandleAttackCombat();
             }
+            HandleAttackCombat();
+            ResetCombat();
+
         }
     }
-    void TargetLock()
+    private void FindTargetEnemy()
     {
-        isLock = playerInput.isLock;
-        if (isLock)
-        {
-            if (currentTarget == null)
-            {
-                FindTarget();
-            }
-            else
-            {
-                UnlockTarget();
-            }
-        }
-
-        if (currentTarget != null)
-        {
-            LockOnTarget();
-        }
-    }
-    void FindTarget()
-    {
-        Collider[] targets = Physics.OverlapSphere(transform.position, lockOnRadius, TargetLayerMask);
-
+        Collider[] targets = Physics.OverlapSphere(transform.position, findTargetRadius, targetLayer);
         float closestDistance = Mathf.Infinity;
         Transform nearestTarget = null;
 
         foreach (Collider target in targets)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
             if (distanceToTarget < closestDistance)
             {
                 closestDistance = distanceToTarget;
@@ -93,57 +67,94 @@ public class PlayerCombatManager : MonoBehaviour
 
         if (nearestTarget != null)
         {
-            currentTarget = nearestTarget;
-            isLock = false;
+            playerManager.currentTarget = nearestTarget;
+            playerManager.IsCombatMode = true;
         }
-    }
-    void LockOnTarget()
-    {
-        if (currentTarget != null)
+        else
         {
-            Vector3 direction = currentTarget.position - cameraManager.transform.position;
-            direction.y = 0;
-
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            cameraManager.transform.rotation = Quaternion.Slerp(cameraManager.transform.rotation, targetRotation, Time.deltaTime);
+            playerManager.currentTarget = null;
+            playerManager.IsCombatMode = false;
         }
     }
-    void UnlockTarget()
+    private void OnDrawGizmos()
     {
-        currentTarget = null;
-        isLock = false;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, findTargetRadius);
+    }
+    private void HandleAttackCombat()
+    {
+        if (Time.time - lastAttackTime > comboDelay)
+        {
+            attackComboStep = 0;
+        }
+        if (PlayerInput.CombatInput)
+        {
+            attackComboStep++;
+            if (attackComboStep == 1)
+            {
+                attackCombatNext = true;
+                playerManager.playerAnimatorManager.UpdateAnimatorCombatParameter("Combat1", attackCombatNext);
+            }
+            else if(attackComboStep == 2)
+            {
+                attackCombatNext = true;
+                playerManager.playerAnimatorManager.UpdateAnimatorCombatParameter("Combat2", attackCombatNext);
+            }
+            lastAttackTime = Time.time;
+        }         
+    }
+    private void ResetCombat()
+    {
+        if(attackComboStep == 0)
+        {
+            attackCombatNext = false;
+            playerManager.playerAnimatorManager.UpdateAnimatorCombatParameter("Combat1", attackCombatNext);
+            playerManager.playerAnimatorManager.UpdateAnimatorCombatParameter("Combat2", attackCombatNext);
+        }       
+    }
+    public void DeactivateHitbox()
+    {
+        attackCollider.enabled = false;
+    }
+    public void ActivateHitbox()
+    {
+        attackCollider.enabled = true;
     }
     IEnumerator DashTowardsTarget()
     {
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = currentTarget.position;
+        Vector3 startPosition = playerManager.transform.position;
+        Vector3 targetPosition = playerManager.currentTarget.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetPosition);
 
         isDashing = true;
-        if (Vector3.Distance(startPosition, targetPosition) > dashStopDistance)
-        {
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            playerManager.transform.rotation = Quaternion.Slerp(cameraManager.transform.rotation, targetRotation, Time.deltaTime);
-            playerManager.characterController.Move(direction * dashSpeed * Time.deltaTime);
+
+        
+        while (Vector3.Distance(playerManager.transform.position, targetPosition) > dashStopDistance && isDashing)
+        {        
+            Vector3 direction = (targetPosition - playerManager.transform.position).normalized;
+            targetRotation = Quaternion.LookRotation(direction);
+
+            playerManager.transform.rotation = Quaternion.Slerp(playerManager.transform.rotation, targetRotation, 300f * Time.deltaTime);
+            if (!playerManager.IsPerformAction)
+            {
+                playerManager.controller.Move(direction * dashSpeed * Time.deltaTime);
+            }                                 
             yield return null;
         }
-        
         isDashing = false;
+        PlayerInput.SprintInput = false;
     }
-    void Dash()
+    bool IsEnemyInRanger()
     {
-        Vector3 dashPosition = transform.position + transform.forward * dashDistance;
-
-        if (!Physics.Raycast(transform.position, transform.forward, dashDistance))
-        {
-            transform.position = dashPosition;
+        enemyDistance = Vector3.Distance(playerManager.transform.position, playerManager.currentTarget.position);
+        if (enemyDistance < findTargetRadius)
+        {           
+            return true;
         }
-        StartCoroutine(DashCooldown());
+        else 
+        {          
+            return false;
+        }       
     }
-    IEnumerator DashCooldown()
-    {
-        canDash = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-    }
+
 }

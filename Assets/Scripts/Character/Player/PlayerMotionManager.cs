@@ -1,93 +1,61 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEngine.GridBrushBase;
+
 
 public class PlayerMotionManager : MonoBehaviour
 {
-    PlayerInput PlayerInput;
-    PlayerManager PlayerManager;
-    PlayerAnimatorManager PlayerAnimatorManager;
-    CameraManager CameraManager;
+    [Header("Component")]
+    PlayerManager playerManager;
+    PlayerInput playerInput;
+    CameraManager cameraManager;
 
-    private Vector2 movementInput;
-    private bool jumpInput = false;
-
-    public bool isGrounded;
     private Vector3 moveDirection;
+    private float horizontalMovement;
+    private float verticalMovement;
     private Vector3 velocity;
-    public Vector3 rotationDirection;
-    private float gravity = -1f;
-    private float jumpForce = 0.2f;
     private float moveSpeed = 7f;
+
 
     private void Awake()
     {
-        PlayerInput = GetComponent<PlayerInput>();
-        PlayerManager = GetComponent<PlayerManager>();
-        PlayerAnimatorManager = GetComponent<PlayerAnimatorManager>();
-        CameraManager = FindAnyObjectByType<CameraManager>();
+        playerManager = GetComponent<PlayerManager>();
+        playerInput = GetComponent<PlayerInput>();
+        cameraManager = FindAnyObjectByType<CameraManager>();
     }
     public void HandleAllMovementAction()
     {
-        GetAllInputAction();
-        if (PlayerManager.playerCombatManager.canDash && !PlayerInput.CombatInput)
+        if (playerManager != null && !playerManager.IsPerformAction)
         {
-            HandleGroundMovementAction();
-            HandleRotationAction();
-        }            
-    }
-    private void GetAllInputAction()
-    {
-        movementInput = PlayerInput.MovementInput;
-        jumpInput = PlayerInput.JumpInput;
-    }
-    private void HandleGroundMovementAction()
-    {
-        isGrounded = PlayerManager.characterController.isGrounded;
-        if (isGrounded && velocity.y < 0f) 
-        {
-            velocity.y = -2f;
+       
+            HandleGroundMovement();
+            
         }
-        if (velocity.z > 0f)
-        {
-            velocity.z = 0f;
-        }
+    }
+    private void GetAllMovementValues()
+    {
+        horizontalMovement = playerInput.horizontalMovementInput;
+        verticalMovement = playerInput.verticalMovementInput;
+    }
+    private void HandleGroundMovement()
+    {
+        GetAllMovementValues();
 
         moveDirection = Vector3.zero;
-        moveDirection = CameraManager.cameraObject.transform.forward * movementInput.y;
-        moveDirection = moveDirection + CameraManager.cameraObject.transform.right * movementInput.x;
+        moveDirection = cameraManager.transform.forward * verticalMovement * Time.deltaTime;
+        moveDirection = moveDirection + cameraManager.transform.right * horizontalMovement * Time.deltaTime;
         moveDirection.Normalize();
-        moveDirection.y = 0f;
+        moveDirection.y = 0;
 
+        playerManager.controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        playerManager.playerAnimatorManager.UpdateAnimatorGroundMovementParameter(0, playerInput.moveAnimator);
 
-        PlayerManager.characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
-        PlayerAnimatorManager.UpdateAnimatorMovementParameter(0, PlayerInput.moveAnimator);
-        
-
-        if (isGrounded && jumpInput) 
-        { 
-            velocity.y = Mathf.Sqrt(jumpForce * gravity * -0.5f);
-        }
-
-        velocity.y +=  gravity/4 * Time.deltaTime;
-        PlayerManager.characterController.Move(velocity);
+        HandleRotationMovement();
     }
-    private void HandleRotationAction()
+    private void HandleRotationMovement()
     {
-        rotationDirection = Vector3.zero;
-        rotationDirection = CameraManager.cameraObject.transform.forward * movementInput.y;
-        rotationDirection = moveDirection + CameraManager.cameraObject.transform.right * movementInput.x;
-
-        if (rotationDirection == Vector3.zero)
+        if (moveDirection != Vector3.zero)
         {
-            rotationDirection = transform.forward;
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
-
-        Quaternion newRotation = Quaternion.LookRotation(rotationDirection);
-        Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime);
-        transform.rotation = newRotation;
-
     }
 }

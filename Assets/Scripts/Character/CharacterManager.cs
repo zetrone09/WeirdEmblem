@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class CharacterManager : MonoBehaviour
 {
-    public CharacterController characterController;
-    public Animator animator;
+    public CharacterController controller { get; private set; }
+    public Animator animator { get; private set; }
     protected virtual void Awake()
     {
-        characterController = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
     }
     protected virtual void Update()
     {
-
+        
     }
 }

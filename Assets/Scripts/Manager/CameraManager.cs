@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public PlayerInput playerInput;
-    public PlayerManager PlayerManager;
-    public PlayerCombatManager playerCombatManager;
+    private PlayerInput playerInput;
+    private PlayerManager playerManager;
     public Camera cameraObject;
     public Transform cameraPivotTransform;
 
@@ -14,11 +11,11 @@ public class CameraManager : MonoBehaviour
     private Vector3 cameraVelocity;
     [SerializeField]private float cameraSmoothSpeed = 1f;
 
+
     [Header("Camera Rotation Setting")]
-    private float horizontalLook;
-    private float verticalLook;
-    private float horizontalLookSpeed = 220f;
-    private float verticalLookSpeed = 220f;
+    public float horizontalLook;
+    public float verticalLook;
+    private float rotationLookSpeed = 220f;
     private float maximunAngle = 30f;
     private float minimumAngle = -30f;
 
@@ -32,45 +29,43 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerManager = FindAnyObjectByType<PlayerManager>();
         playerInput = FindAnyObjectByType<PlayerInput>();
-        playerCombatManager = FindAnyObjectByType<PlayerCombatManager>();
-    }
-    private void Start()
-    {
+        playerManager = FindAnyObjectByType<PlayerManager>();
+        cameraObject = Camera.main;
         defaultCameraZPosition = cameraObject.transform.localPosition.z;
     }
     private void Update()
     {
-        HandleCameraAction();
+        HandleAllCameraAction();
     }
-    void HandleCameraAction()
-    {
-        if (PlayerManager != null) 
+    void HandleAllCameraAction()
+    {     
+        FollowCameraAction();
+        if (playerManager.IsCombatMode) 
         {
-            FollowCameraAction();
-            if (playerCombatManager.currentTarget == null)
-            {
-                RotationCameraAction();
-            }
-            CameraCollisitionAction();
-        }       
+            CameraLockTargetAction();    
+        }
+        else
+        {
+            RotationCameraAction();
+        }                                  
+        CameraCollisitionAction();             
     }
     private void FollowCameraAction()
     {
-        Vector3 smoothDirection = Vector3.SmoothDamp(transform.transform.position,PlayerManager.transform.position,ref cameraVelocity, cameraSmoothSpeed * Time.deltaTime);
+        Vector3 smoothDirection = Vector3.SmoothDamp(transform.transform.position,playerManager.transform.position,ref cameraVelocity, cameraSmoothSpeed * Time.deltaTime);
         transform.position = smoothDirection;
     }
     private void RotationCameraAction()
     {
-        horizontalLook += playerInput.CameraInput.x * horizontalLookSpeed * Time.deltaTime;
-        verticalLook -= playerInput.CameraInput.y * verticalLookSpeed * Time.deltaTime;
+        horizontalLook += playerInput.CameraInput.x * rotationLookSpeed * Time.deltaTime;
+        verticalLook -= playerInput.CameraInput.y * rotationLookSpeed * Time.deltaTime;
         verticalLook = Mathf.Clamp(verticalLook, minimumAngle, maximunAngle);
 
         Vector3 cameraRotation = Vector3.zero;
         Quaternion rotationCamera;
 
-        cameraRotation.y = horizontalLook;
+        cameraRotation.y = horizontalLook ;
         rotationCamera = Quaternion.Euler(cameraRotation);
         transform.rotation = rotationCamera;
 
@@ -78,6 +73,7 @@ public class CameraManager : MonoBehaviour
         cameraRotation.x = verticalLook;
         rotationCamera = Quaternion.Euler(cameraRotation);
         cameraPivotTransform.transform.localRotation = rotationCamera;
+                
     }
     private void CameraCollisitionAction()
     {
@@ -99,5 +95,20 @@ public class CameraManager : MonoBehaviour
         cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, targetCameraZPosition, 0.2f);
         cameraObject.transform.localPosition = cameraObjectPosition;
     }
+    private void CameraLockTargetAction()
+    {
+        if (playerManager.currentTarget != null)
+        {
+            Vector3 direction = playerManager.currentTarget.position - transform.position;
+            direction.y = 0;
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationLookSpeed * Time.deltaTime);
+            horizontalLook += transform.rotation.y;
+            verticalLook += transform.rotation.x;
+        }       
+    }
     
+
+
 }

@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
+    PlayerManager playerManager;
     CharacterControls playerInput;
-
-    [Header("Player Input")]
-    public Vector2 MovementInput;
-    public Vector2 CameraInput;
-    public bool CombatInput;
-    public bool JumpInput = false;
-    public bool SprintInput = false;
-    public bool isLock = false;
-
-    public float moveAnimator;
+    public Vector2 MovementInput { get; private set; }
+    public float horizontalMovementInput { get; private set; }
+    public float verticalMovementInput { get; private set; }
+    public float moveAnimator { get; private set; }
+    public Vector2 CameraInput { get; private set; }
+    public bool CombatInput { get; private set; }
+    public bool JumpInput { get; private set; }
+    public bool SprintInput { get; set; }
+    public bool isLock { get; private set; } = false;
+    
     private void Awake()
     {
+        playerManager = GetComponent<PlayerManager>();
         if (playerInput == null) 
         { 
             playerInput = new CharacterControls();
@@ -31,50 +30,42 @@ public class PlayerInput : MonoBehaviour
             playerInput.PlayerMovement.Attack.canceled += ctx => CombatInput = false;
 
             playerInput.PlayerMovement.Jump.performed += ctx => JumpInput = true;
-            playerInput.PlayerMovement.Jump.canceled += ctx => JumpInput = false;
 
             playerInput.PlayerMovement.Sprint.started += ctx => SprintInput = true;
-            playerInput.PlayerMovement.Sprint.canceled += ctx => SprintInput = false;
 
             playerInput.PlayerCamera.LockTarget.started += ctx => isLock = true;
-            playerInput.PlayerCamera.LockTarget.canceled += ctx => isLock = false;
         }
     }
-    private void OnApplicationFocus(bool focus)
+    private void OnEnable()
     {
-        if (focus)
-        {
-            playerInput.Enable();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else 
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            playerInput.Disable();
-        }
+        playerInput.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        playerInput.Disable();
     }
     private void Update()
     {
-        UpdateMoveAnimator();
+        HandleGroundMovementInput();
     }
-    public void UpdateMoveAnimator()
+    private void HandleGroundMovementInput()
     {
-        if (SprintInput && MovementInput.sqrMagnitude > 0)
-        {
-            moveAnimator = 1f;
-        }
-        else if (MovementInput.sqrMagnitude > 0)
+        horizontalMovementInput = MovementInput.x;
+        verticalMovementInput = MovementInput.y;
+        moveAnimator = Mathf.Abs(Mathf.Abs(horizontalMovementInput) + Mathf.Abs(verticalMovementInput));
+
+        if (moveAnimator > 0 && moveAnimator <= 0.5f) 
         {
             moveAnimator = 0.5f;
         }
-        else 
-        { 
-            moveAnimator = 0f;
+        else if(moveAnimator > 0.5f && moveAnimator <= 1f)
+        {
+            moveAnimator = 1f;
         }
-
     }
-
 
 }
